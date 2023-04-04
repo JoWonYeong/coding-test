@@ -26,18 +26,24 @@ function solution(answers) {
   let index = 0;
   let count = 1;
 
+  let max = 0;
+
   while (count <= 3) {
-    if (Math.max(...시험결과) != 0) {
+    if (Math.max(...시험결과) >= max) {
       index = 시험결과.indexOf(Math.max(...시험결과));
       answer.push(index + 1);
-      시험결과[index] = -1;
+      max = 시험결과[index];
+      시험결과[index] = 0;
     }
     count++;
   }
+
+  console.log(answer);
 
   return answer;
 }
 
 solution([1, 2, 3, 4, 5]);
 solution([1, 3, 2, 4, 2]);
-solution([3, 3, 3, 1, 2, 2, 4]);
+solution([3, 3, 2, 1, 5]);
+solution([5, 5, 4, 2, 3]);
