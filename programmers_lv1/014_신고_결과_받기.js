@@ -1,79 +1,54 @@
 function solution(id_list, report, k) {
   var answer = [];
-  let 신고현황 = [];
-  let 신고당한횟수 = new Array(id_list.length).fill(0);
-  let 정리 = [];
 
-  id_list.forEach((a, i) => {
-    정리.push([a]);
-  });
-  // 정리 = [ [ 'muzi' ], [ 'frodo' ], [ 'apeach' ], [ 'neo' ] ]
+  // id 별로 중복 제외 신고당한 수
+  let id별신고당한수 = new Array(id_list.length).fill(0);
+  let id별신고한사람 = [];
+
+  for (let i = 0; i < id_list.length; i++) {
+    let 배열 = [];
+    id별신고한사람.push(배열);
+    answer.push(0);
+  }
 
   report.forEach((a, i) => {
-    신고현황.push(a.split(' '));
-    신고당한횟수[id_list.indexOf(a.split(' ')[1])] += 1;
-  });
+    let 신고자 = a.split(' ')[0];
+    let 신고당함 = a.split(' ')[1];
+    let 신고자index = id_list.indexOf(신고자);
 
-  console.log(신고현황);
-  // 중복체크해야됨 두번째 테스트케이스로
-
-  // 신고현황 = [
-  //   [ 'muzi', 'frodo' ],
-  //   [ 'apeach', 'frodo' ],
-  //   [ 'frodo', 'neo' ],
-  //   [ 'muzi', 'neo' ],
-  //   [ 'apeach', 'muzi' ]
-  // ]
-  console.log(신고당한횟수);
-
-  // 신고당한횟수 = [ 1, 2, 0, 2 ]
-
-  id_list.forEach((a, i) => {
-    let 유저가신고한id = [];
-    for (let j = 0; j < 신고현황.length; j++) {
-      if (
-        신고현황[j][0] == a &&
-        !유저가신고한id.join().includes(신고현황[j][1])
-      ) {
-        유저가신고한id.push(신고현황[j][1]);
-      }
+    if (!id별신고한사람[신고자index].includes(신고당함)) {
+      id별신고한사람[신고자index].push(신고당함);
+      id별신고당한수[id_list.indexOf(신고당함)] += 1;
     }
-    정리[i][1] = 유저가신고한id;
-    정리[i][2] = 0;
   });
 
-  // 정리 = [
-  //   [ 'muzi', [ 'frodo', 'neo' ], 0 ],
-  //   [ 'frodo', [ 'neo' ], 0 ],
-  //   [ 'apeach', [ 'frodo', 'muzi' ], 0 ],
-  //   [ 'neo', [], 0 ]
-  // ]
+  let 정지된애들 = [];
 
-  let 신고당한사람들 = [];
-  신고당한횟수.forEach((a, i) => {
+  id별신고당한수.forEach((a, i) => {
     if (a >= k) {
-      신고당한사람들.push(id_list[i]);
+      정지된애들.push(id_list[i]);
     }
   });
-  console.log(신고당한사람들);
 
-  정리.forEach((a, i) => {
-    신고당한사람들.forEach((b, j) => {
-      if (a[1].includes(b)) {
-        a[2] += 1;
+  id별신고한사람.forEach((a, i) => {
+    for (let j = 0; j < 정지된애들.length; j++) {
+      if (a.includes(정지된애들[j])) {
+        answer[i]++;
       }
-    });
+    }
   });
-
-  console.log(정리);
 
   return answer;
 }
 
-// solution(
-//   ['muzi', 'frodo', 'apeach', 'neo'],
-//   ['muzi frodo', 'apeach frodo', 'frodo neo', 'muzi neo', 'apeach muzi'],
-//   2
-// );
+console.log(
+  solution(
+    ['muzi', 'frodo', 'apeach', 'neo'],
+    ['muzi frodo', 'apeach frodo', 'frodo neo', 'muzi neo', 'apeach muzi'],
+    2
+  )
+);
 
-solution(['con', 'ryan'], ['ryan con', 'ryan con', 'ryan con', 'ryan con'], 3);
+console.log(
+  solution(['con', 'ryan'], ['ryan con', 'ryan con', 'ryan con', 'ryan con'], 3)
+);
