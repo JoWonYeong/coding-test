@@ -1,56 +1,59 @@
 function solution(dartResult) {
   var answer = 0;
-  let temp = [];
+  let score = [0, 0, 0];
+  let bonus = [1, 1, 1];
+  let option = [1, 1, 1];
 
-  let j = 0;
+  let 최종 = [0, 0, 0];
 
-  for (let i = 0; i < dartResult.length; i++) {
-    if (dartResult[i] == 'S' || dartResult[i] == 'D' || dartResult[i] == 'T') {
-      if (dartResult[i + 1] == '*' || dartResult[i + 1] == '#') {
-        temp.push(dartResult.substring(j, i + 2));
-        j = i + 2;
-      } else {
-        temp.push(dartResult.substring(j, i + 1));
-        j = i + 1;
+  for (let i = 0; i < 3; i++) {
+    score[i] = parseInt(dartResult);
+    dartResult = dartResult.slice(String(score[i]).length);
+
+    if (dartResult[0] == 'S' || dartResult[0] == 'D' || dartResult[0] == 'T') {
+      switch (dartResult[0]) {
+        case 'S':
+          bonus[i] = 1;
+          break;
+        case 'D':
+          bonus[i] = 2;
+          break;
+        case 'T':
+          bonus[i] = 3;
+          break;
       }
+      dartResult = dartResult.slice(1);
+    }
+
+    if (dartResult[0] == '*' || dartResult[0] == '#') {
+      switch (dartResult[0]) {
+        case '*':
+          option[i] = 2;
+          break;
+        case '#':
+          option[i] = -1;
+          break;
+      }
+      dartResult = dartResult.slice(1);
     }
   }
 
-  let 답 = 0;
-  let 답배열 = [];
-  temp.forEach((a, i) => {
-    let 숫자 = '';
+  for (let i = 0; i < 3; i++) {
+    최종[i] = score[i] ** bonus[i];
+    최종[i] = 최종[i] * option[i];
 
-    for (let j = 0; j < a.length; j++) {
-      switch (a[j]) {
-        case 'S':
-          답 += parseInt(숫자);
-          break;
-        case 'D':
-          답 += parseInt(숫자) ** 2;
-          break;
-        case 'T':
-          답 += parseInt(숫자) ** 3;
-          break;
-        case '*':
-          답 += parseInt(숫자) * 2;
-          답 += 답배열[i - 1];
-          break;
-        case '#':
-          break;
-        default:
-          숫자 += a[j];
-          break;
-      }
-      답배열.push(답);
+    if (i > 0 && option[i] == 2) {
+      최종[i - 1] *= 2;
     }
-    console.log(숫자);
-  });
-  console.log(temp);
+  }
+
+  answer = 최종.reduce((acc, score) => {
+    return acc + score;
+  }, 0);
 
   return answer;
 }
 
-solution('11S2D*3T');
-// solution('1D2S#10S');
-// solution('1D#2S*3S');
+console.log(solution('1S2D*3T'));
+console.log(solution('1D2S#10S'));
+console.log(solution('1D#2S*3S'));
