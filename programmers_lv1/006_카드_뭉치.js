@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/159994
+
 function solution(cards1, cards2, goal) {
   let index1 = 0;
   let index2 = 0;

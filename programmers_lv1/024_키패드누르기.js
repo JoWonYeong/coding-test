@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/67256
+
 function solution(numbers, hand) {
   var answer = '';
   let 현재위치 = [10, 11]; // [왼, 오]
