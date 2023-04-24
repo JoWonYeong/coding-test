@@ -7,9 +7,9 @@ function solution(sizes) {
     sizes[i] = a.sort((a, b) => a - b);
   });
 
-  for (const iterator of sizes) {
-    가로.push(iterator[0]);
-    세로.push(iterator[1]);
+  for (const a of sizes) {
+    가로.push(a[0]);
+    세로.push(a[1]);
   }
   answer = Math.max(...가로) * Math.max(...세로);
 
