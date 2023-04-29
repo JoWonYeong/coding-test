@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/12939
+
 function solution(s) {
   var answer = '';
   answer = `${Math.min(...s.split(' ').map(Number))} ${Math.max(

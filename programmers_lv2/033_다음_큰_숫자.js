@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/12911
+
 function 이진수1개수반환(num) {
   let 개수 = 0;
   while (num !== 0) {
