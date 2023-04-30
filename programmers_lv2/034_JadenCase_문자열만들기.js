@@ -5,40 +5,34 @@
 
 function solution(s) {
   var answer = '';
-  console.log(s.split(' '));
+  let start = true;
 
-  s.split(' ').forEach((a, i) => {
-    if (isNaN(a[0])) {
-      // 문자로 시작할 때
-      a = a.replace(a[0], a[0].toUpperCase());
-    }
-
-    let 소문자확인 = a.slice(1).match(/[a-z]+/g);
-    console.log(소문자확인);
-
-    if (소문자확인.length >= 2) {
-      let len = 0;
-      for (let i = 0; i < 소문자확인.length - 1; i++) {
-        a = a.replace(
-          a[len + 소문자확인[i].length + i + 1],
-          a[len + 소문자확인[i].length + i + 1].toLowerCase()
-        );
-        len += 소문자확인[i].length;
+  s.split('').forEach((a, i) => {
+    if (a === ' ') {
+      answer += ' ';
+      start = true;
+    } else {
+      if (start === true) {
+        // 첫글자일때
+        if (isNaN(a)) {
+          // 문자일 때
+          answer += a.toUpperCase();
+        } else {
+          // 숫자일 때
+          answer += a;
+        }
+        start = false;
+      } else {
+        // 첫글자가 아닐때
+        answer += a.toLowerCase();
       }
     }
-
-    answer = answer + a + ' ';
-    // console.log(answer);
   });
-  answer = answer.slice(0, answer.length - 1);
-  console.log(answer);
 
   return answer;
 }
 
-// solution('3people unFollowed me');
-// solution('for the last week');
-// 'A Aa'
-// solution('a aa');
-// solution(' for   THE last week ');
-// solution('A');
+solution('3people unFollowed me');
+solution('for the last week');
+solution('a aa');
+solution(' for   THE last week ');
