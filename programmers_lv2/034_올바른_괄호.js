@@ -25,7 +25,7 @@ function solution(s) {
 // solution(')');
 
 // 실패예시
-function solution2(s) {
+function fail(s) {
   let isOpen = 0;
 
   s.split('').forEach((a, i) => {
