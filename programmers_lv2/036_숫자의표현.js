@@ -6,18 +6,20 @@
 // 등차수열 공식 x(a+b)/2 = n
 
 function solution(n) {
-  var answer = 0;
-  let x = 0;
+  var answer = 1; // 본인 미리 1 카운트
 
-  // while (1) {
-  let sum = 0;
-  while (sum < n) {
-    x++;
-    sum += x;
-    console.log(x);
+  for (let i = 1; i <= Math.floor(n / 2); i++) {
+    let sum = i;
+    let x = i;
+    while (sum < n) {
+      x += 1;
+      sum += x;
+      if (sum == n) {
+        answer += 1;
+        break;
+      }
+    }
   }
-
-  // }
 
   return answer;
 }
