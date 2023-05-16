@@ -1,16 +1,15 @@
-function solution(absolutes, signs) {
-  var answer = 123456789;
+// https://school.programmers.co.kr/learn/courses/30/lessons/76501
 
-  let 수 = [];
+function solution(absolutes, signs) {
+  var answer = 0;
+
   absolutes.forEach((a, i) => {
     if (signs[i] == true) {
-      수.push(a);
+      answer += a;
     } else {
-      수.push(parseInt('-' + a));
+      answer -= a;
     }
   });
-
-  answer = 수.reduce((acc, current) => acc + current, 0);
 
   return answer;
 }
