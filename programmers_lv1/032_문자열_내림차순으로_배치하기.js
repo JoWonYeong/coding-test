@@ -8,7 +8,7 @@
 // 대문자 : 65 ~ 90
 // 소문자 : 97 ~ 122
 
-function solution(s) {
+function solution1(s) {
   const 소문자아스키코드 = [];
   const 대문자아스키코드 = [];
 
@@ -29,6 +29,18 @@ function solution(s) {
     String.fromCharCode(...소문자아스키코드) +
     String.fromCharCode(...대문자아스키코드)
   );
+}
+
+function solution2(s) {
+  const 아스키코드 = [];
+
+  [...s].forEach((a, i) => {
+    아스키코드.push(a.charCodeAt(0));
+  });
+
+  아스키코드.sort((a, b) => b - a);
+
+  return String.fromCharCode(...아스키코드);
 }
 
 solution('Zbcdefg');

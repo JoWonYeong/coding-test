@@ -1,20 +1,26 @@
 function solution(k, dungeons) {
-  var answer = -1;
-  let checked = new Array(dungeons.length).fill(0);
-  console.log(checked);
+  var answer = [];
+  let visited = new Array(dungeons.length).fill(0);
 
-  dungeons.sort((a, b) => b[0] - a[0]);
+  function dfs(count, k) {
+    answer.push(count);
+    console.log('answer : ' + answer);
+    console.log('visited : ' + visited);
 
-  for (let i = 0; i < dungeons.length; i++) {
-    if (k - dungeons[i][0] >= 0) {
-      checked[i] = k;
-      k -= dungeons[i][1];
-    } else {
+    for (let i = 0; i < dungeons.length; i++) {
+      let current = dungeons[i];
+
+      if (k >= current[0] && !visited[i]) {
+        visited[i] = 1;
+        dfs(count + 1, k - current[1]);
+        visited[i] = 0;
+      }
     }
   }
-  console.log(checked);
 
-  return answer;
+  dfs(0, k);
+
+  return Math.max(...answer);
 }
 
 solution(80, [
