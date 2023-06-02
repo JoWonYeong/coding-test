@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/138476
+
 function solution(k, tangerine) {
   var answer = 1;
   let max = Math.max(...tangerine);

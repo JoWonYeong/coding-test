@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/17677
+
 function solution(str1, str2) {
   var answer = 0;
   str1 = str1.toUpperCase();

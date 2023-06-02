@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/87946
+
 function solution(k, dungeons) {
   var answer = [];
   let visited = new Array(dungeons.length).fill(0);

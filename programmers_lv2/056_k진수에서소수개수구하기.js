@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/92335
+
 function solution(n, k) {
   var answer = 0;
   n.toString(k)

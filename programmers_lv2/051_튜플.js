@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/64065
+
 function solution(s) {
   let arr = JSON.parse(s.replace(/{/g, '[').replace(/}/g, ']'));
   let map = new Map();

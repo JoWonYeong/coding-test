@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/92341
+
 function solution(fees, records) {
   records.sort((a, b) => a.split(' ')[1] - b.split(' ')[1]);
   var answer = [];

@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/131127
+
 function solution(want, number, discount) {
   var answer = 0;
   let map = new Map();

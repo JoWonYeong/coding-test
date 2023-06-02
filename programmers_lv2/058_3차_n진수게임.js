@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/17687
+
 function solution(n, t, m, p) {
   var answer = '';
   let str = '';

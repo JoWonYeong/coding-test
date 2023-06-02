@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/17684
+
 function solution(msg) {
   var answer = [];
   let dic = new Map();
