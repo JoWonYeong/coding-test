@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/17679
+
 function solution(m, n, board) {
   let answer = 0;
   // m : 높이(세로), n : 폭(가로)
@@ -33,6 +35,7 @@ function solution(m, n, board) {
           ' ';
     });
 
+    // 지워진 블록 위에 블록들 밑으로 보냄
     for (let i = 0; i < n; i++) {
       for (let j = 0; j < m; j++) {
         if (board[j][i] === ' ') {
