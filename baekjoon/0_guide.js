@@ -1,9 +1,6 @@
 const fs = require('fs');
 let input = fs.readFileSync('/dev/stdin').toString().split('\n');
 
-input = input[0];
-// input2 = input[1];
-
 solution(input);
 
 // 파일을 읽어오기 위해 Node.js의 built-in file system module fs 사용
